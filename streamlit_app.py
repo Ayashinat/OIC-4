@@ -34,3 +34,5 @@ if charger_photo:
             st.info("Aucune donnée GPS trouvée.")
     else:
         st.info("Aucune métadonnée EXIF détectée.")
+        
+
