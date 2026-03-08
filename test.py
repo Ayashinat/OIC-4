@@ -49,5 +49,3 @@ if charger_photo:
 
     st.subheader("EXIF via piexif")
     st.write(exif_dict)
-    
-	
