@@ -1,3 +1,17 @@
+#===============/           Chapitre 4 : Exercice 2            \================
+#=~~~~~~~~~~~~=|                    Streamlit                   |=~~~~~~~~~~~~~=
+#===============\             Modifier métadonnées             /================
+#
+# Auteur 1 : Wewe Maitre        24001170
+# Auteur 2 : Sylvain Maitre     24002886
+#
+# Date de création :              19/02/2026
+# Date de dernière modification : 29/03/2026
+#
+# 
+#
+#=============================================================================*/
+
 import streamlit as st
 from PIL import ExifTags, Image
 from streamlit_folium import st_folium
@@ -6,7 +20,7 @@ import piexif
 import os
 import tempfile
 
-
+# Fonctions utilitaires pour la conversion et manipulation des données EXIF GPS
 
 def decimal_vers_dms_rationnel(valeur):
     """Convertit un decimal en DMS pour le format EXIF GPS."""
@@ -73,6 +87,8 @@ def lire_texte_exif(bloc, tag_id, defaut=""):
             return str(valeur)
     return str(valeur)
 
+
+#=============================/           Interface Streamlit           \=============================
 
 st.set_page_config(page_title="OIC 4.2 - EXIF GPS", layout="wide")
 st.title("OIC 4.2 - Edition EXIF + GPS + Cartes")
@@ -243,7 +259,7 @@ if charger_photo:
     st_folium(carte, width=700, height=500)
 
 
-
+# Pour la partie 2 de l'exercice, on affiche une carte avec plusieurs points d'intérêt et une ligne les reliant.
 
 st.subheader("Carte de voyage")
 
