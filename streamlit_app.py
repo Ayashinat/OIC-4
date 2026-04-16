@@ -13,7 +13,7 @@
 #=============================================================================*/
 
 import streamlit as st
-from PIL import ExifTags, Image
+from PIL import Image
 from streamlit_folium import st_folium
 import folium
 import piexif
