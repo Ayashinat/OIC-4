@@ -57,6 +57,7 @@ def dms_vers_decimal(dms, ref):
     decimal = degres + (minutes / 60.0) + (secondes / 3600.0)
     if ref in (b"S", b"W"):
         decimal = -decimal
+        
     return decimal
 
 
@@ -73,7 +74,7 @@ def extraire_coordonnees_gps(exif_dict):
         latitude_decimal = dms_vers_decimal(latitude_dms, latitude_ref)
         longitude_decimal = dms_vers_decimal(longitude_dms, longitude_ref)
         return latitude_decimal, longitude_decimal
-
+    
     return None, None
 
 
@@ -116,11 +117,7 @@ if charger_photo:
 
         gps = exif_lisible.get("GPSInfo")
 
-        if gps is not None:
-            st.subheader("Balise GPS brute")
-            st.write(gps)
-            st.write("Type :", type(gps))
-        else:
+        if gps is None:
             st.info("Aucune donnée GPS trouvée.")
     else:
         st.info("Aucune métadonnée EXIF détectée.")
@@ -137,9 +134,6 @@ if charger_photo:
             "1st": {},
             "thumbnail": None
         }
-
-    st.subheader("EXIF via piexif")
-    st.write(exif_dict)
 
     # Afficher les coordonnées GPS extraites
     latitude_gps, longitude_gps = extraire_coordonnees_gps(exif_dict)
