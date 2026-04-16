@@ -106,20 +106,7 @@ if charger_photo:
 
     exif = image.getexif()
 
-    if exif:
-        exif_lisible = {}
-        for tag_id, valeur in exif.items():
-            nom_tag = ExifTags.TAGS.get(tag_id, tag_id)
-            exif_lisible[nom_tag] = valeur
-
-        st.subheader("Métadonnées EXIF")
-        st.write(exif_lisible)
-
-        gps = exif_lisible.get("GPSInfo")
-
-        if gps is None:
-            st.info("Aucune donnée GPS trouvée.")
-    else:
+    if not exif:
         st.info("Aucune métadonnée EXIF détectée.")
 
     try:
